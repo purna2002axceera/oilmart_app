@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Oil Mart - Dashboard</title>
+  <link rel="stylesheet" href="./../assets/style.css">
+</head>
+<body>
+  <div id="navbar-container"></div>
+
+  <div class="content" id="main-content">
+    <h1>Welcome to Oil Mart Dashboard</h1>
+    <p>Select an option from the sidebar to get started!</p>
+  </div>
+
+  <script>
+    fetch('./navbar.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('navbar-container').innerHTML = data;
+      });
+
+    function loadPage(page) {
+      const contentDiv = document.getElementById('main-content');
+      
+      let pageFile = '';
+
+      switch(page) {
+        case 'ItemMaster':
+          pageFile = './ItemMaster.html';
+          break;
+        case 'grn':
+          pageFile = './grn.html';
+          break;
+        case 'profile':
+          pageFile = './profile.html';
+          break;
+        default:
+          contentDiv.innerHTML = `
+            <h1>Welcome to Oil Mart Dashboard</h1>
+            <p>Select an option from the sidebar to get started!</p>
+          `;
+          return;
+      }
+
+      fetch(pageFile)
+        .then(response => response.text())
+        .then(data => {
+          const parser = new DOMParser();
+          const doc = parser.parseFromString(data, 'text/html');
+          const content = doc.querySelector('.content');
+          contentDiv.innerHTML = content ? content.innerHTML : data;
+          if (page === 'ItemMaster') {
+            loadScript('./../scripts/itemMaster.js');
+          }
+        });
+    }
+
+    function loadScript(src) {
+      const existingScript = document.querySelector(`script[src="${src}"]`);
+      if (existingScript) existingScript.remove();
+      const script = document.createElement('script');
+      script.src = src;
+      document.body.appendChild(script);
+    }
+
+    window.loadPage = loadPage;
+  </script>
+</body>
+</html>

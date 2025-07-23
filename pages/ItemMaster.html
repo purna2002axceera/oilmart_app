@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Oil Mart - Item Master</title>
+  <link rel="stylesheet" href="./../assets/style.css">
+</head>
+<body>
+  <div id="navbar-container"></div>
+
+  <div class="content">
+    <div class="item-form-header">
+      <h3>Create Item</h3>
+    </div>
+
+    <div class="form-row">
+      <select id="brand">
+        <option value="">-Select Brand-</option>
+        <option value="Caltex">Caltex</option>
+        <option value="Shell">Shell</option>
+        <option value="Total">Total</option>
+        <option value="Mobil">Mobil</option>
+      </select>
+      <button class="plus-button">+</button>
+      <input type="text" id="materialCode" placeholder="Material Code">
+    </div>
+
+    <div class="form-row">
+      <input type="text" id="wholesaleAmount" placeholder="Enter Wholesale Amount">
+      <input type="text" id="retailAmount" placeholder="Enter Retail Amount">
+    </div>
+
+    <div class="form-row">
+      <textarea id="specification" placeholder="Enter Product Specification ..."></textarea>
+      <textarea id="description" placeholder="Enter Material Description ..."></textarea>
+    </div>
+
+    <div class="form-actions">
+      <button class="add-button" onclick="addItem()">Add Item</button>
+      <button class="reset-button" onclick="resetForm()">Reset</button>
+    </div>
+  </div>
+
+  <script>
+    fetch('./navbar.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('navbar-container').innerHTML = data;
+      });
+  </script>
+  <script src="./../scripts/itemMaster.js"></script>
+</body>
+</html>
