@@ -1,17 +1,40 @@
-<!DOCTYPE html>
-<html>
-<head>
+<!DOCTYPE html> 
+<html> 
+<head> 
   <title>Oil Mart - Login</title>
-  <link rel="stylesheet" href="../assets/style.css">
-</head>
-<body>
-  <div class="login-container">
-    <h2>Welcome Back<br><span>Oil Mart</span></h2>
-    <input type="text" id="username" placeholder="Enter Username">
-    <input type="password" id="password" placeholder="Enter Password">
-    <button onclick="login()">LOGIN</button>
-  </div>
-
-  <script src="./../scripts/login.js"></script>
-</body>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/login.css">
+</head> 
+<body> 
+  <div class="login-container"> 
+    <div class="logo-section">
+      <h2>Welcome Back</h2>
+      <span class="subtitle">Oil Mart</span>
+    </div>
+    
+    <form id="loginForm">
+      <div class="input-group">
+        <label for="username">Username</label>
+        <input type="text" id="username" placeholder="Enter your username" required>
+      </div>
+      
+      <div class="input-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" placeholder="Enter your password" required>
+      </div>
+      
+      <button type="submit" class="login-button" id="loginBtn">
+        <span class="loading-spinner" id="loadingSpinner"></span>
+        <span id="buttonText">Login</span>
+      </button>
+      
+      <div class="error-message" id="errorMessage"></div>
+    </form>
+    
+    <div class="footer-text">
+      Secure login for authorized personnel only
+    </div>
+  </div> 
+   <script src="../scripts/login.js"></script>
+</body> 
 </html>

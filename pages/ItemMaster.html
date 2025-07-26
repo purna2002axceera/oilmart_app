@@ -1,52 +1,36 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Oil Mart - Item Master</title>
-  <link rel="stylesheet" href="./../assets/style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <title>Add Item</title>
+  <link rel="stylesheet" href="../css/itemMaster.css" />
+
 </head>
 <body>
-  <div id="navbar-container"></div>
-
-  <div class="content">
-    <div class="item-form-header">
-      <h3>Create Item</h3>
-    </div>
-
-    <div class="form-row">
-      <select id="brand">
-        <option value="">-Select Brand-</option>
-        <option value="Caltex">Caltex</option>
-        <option value="Shell">Shell</option>
-        <option value="Total">Total</option>
-        <option value="Mobil">Mobil</option>
+    <div class="top-row">
+      <select id="brand" class="input short">
+        <option value="">Select Brand</option>
+        <option value="Brand A">Brand A</option>
+        <option value="Brand B">Brand B</option>
       </select>
-      <button class="plus-button">+</button>
-      <input type="text" id="materialCode" placeholder="Material Code">
+      <button class="add-btn">
+        <span class="plus-icon">+</span>
+      </button>
+      <input type="text" id="materialCode" class="input" placeholder="Material Code" />
     </div>
 
-    <div class="form-row">
-      <input type="text" id="wholesaleAmount" placeholder="Enter Wholesale Amount">
-      <input type="text" id="retailAmount" placeholder="Enter Retail Amount">
+    <input type="text" id="wholesaleAmount" class="input" placeholder="Wholesale Amount" />
+    <input type="text" id="retailAmount" class="input" placeholder="Retail Amount" />
+    <input type="text" id="description" class="input" placeholder="Material Description" />
+    <input type="text" id="specification" class="input" placeholder="Product Specification" />
+
+    <div class="actions">
+      <button class="submit-btn">Add Item</button>
+      <button class="reset-btn">Reset</button>
     </div>
 
-    <div class="form-row">
-      <textarea id="specification" placeholder="Enter Product Specification ..."></textarea>
-      <textarea id="description" placeholder="Enter Material Description ..."></textarea>
-    </div>
-
-    <div class="form-actions">
-      <button class="add-button" onclick="addItem()">Add Item</button>
-      <button class="reset-button" onclick="resetForm()">Reset</button>
-    </div>
-  </div>
-
-  <script>
-    fetch('./navbar.html')
-      .then(response => response.text())
-      .then(data => {
-        document.getElementById('navbar-container').innerHTML = data;
-      });
-  </script>
-  <script src="./../scripts/itemMaster.js"></script>
+    <script src="../scripts/itemMaster.js"></script>
 </body>
 </html>
